@@ -1,0 +1,58 @@
+<div class="flex justify-around items-center">
+    @if ($order->acknowledgment_path)
+        <button wire:click="previewAck({{ $order->id }})"
+            class="text-nowrap flex items-center w-full px-4 py-2 hover:bg-gray-100 text-blue-600 hover:text-blue-800 mt-2 font-bold">
+            <svg class="w-4 h-4 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z">
+                </path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                </path>
+            </svg>
+            {{__('Order confirmation')}}
+        </button>
+    @endif
+    @if ($order->invoice_path)
+        <button wire:click="previewInvoice({{ $order->id }})"
+            class="flex items-center w-full px-4 py-2 hover:bg-gray-100 text-blue-600 hover:text-blue-800 mt-2 font-bold">
+            <svg class="w-4 h-4 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z">
+                </path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                </path>
+            </svg>
+            Invoice
+        </button>
+    @endif
+    @php
+        $edi855 = App\Models\Edi855::where('purchase_order', $order->purchase_order_number)->exists();
+        // $edi856 = App\Models\Edi856::where('poNumber',$order->purchase_order_number)->exists();
+    @endphp
+    @if ($edi855)
+        <button wire:click="previewEdi855('{{ $order->purchase_order_number }}')"
+            class="text-nowrap flex items-center w-full px-4 py-2 hover:bg-gray-100 text-blue-600 hover:text-blue-800 mt-2 font-bold">
+            <svg class="w-4 h-4 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z">
+                </path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                </path>
+            </svg>
+            {{__('Order Acknowledgement')}}
+        </button>
+    @endif
+     {{-- @if ($edi856)
+        <button wire:click="previewEdi856('{{ $order->purchase_order_number }}')"
+            class="text-nowrap flex items-center w-full px-4 py-2 hover:bg-gray-100 text-blue-600 hover:text-blue-800 mt-2 font-bold">
+            <svg class="w-4 h-4 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z">
+                </path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                </path>
+            </svg>
+            {{__('Track order')}}
+        </button>
+    @endif --}}
+</div>

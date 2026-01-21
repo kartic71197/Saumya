@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('patient_details', function (Blueprint $table) {
+            $table->id();
+            $table->date('date_given')->nullable();
+            $table->string('patient_id')->nullable();
+            $table->string('product_id')->nullable();
+            $table->string('batch_number')->nullable();
+            $table->date('expiry_date')->nullable();
+            $table->string('quantity')->nullable();
+            $table->string('dose')->nullable();
+            $table->string('frequency')->nullable();
+            $table->string('paid')->nullable();
+            $table->string('our_cost')->nullable();
+            $table->string('pt_copay')->nullable();
+            $table->string('profit')->nullable();
+            $table->string('unit')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('patient_details');
+    }
+};
