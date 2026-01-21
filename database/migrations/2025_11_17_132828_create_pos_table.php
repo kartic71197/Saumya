@@ -30,10 +30,6 @@ return new class extends Migration {
 
             // customer_id
             $table->unsignedBigInteger('customer_id')->nullable();
-            $table->foreign('customer_id')
-                ->references('id')->on('pos_customers')
-                ->nullOnDelete();
-
             // created_by
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')
