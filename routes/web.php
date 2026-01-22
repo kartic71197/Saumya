@@ -18,15 +18,15 @@ use App\Http\Controllers\NotificationController;
 
 
 
-Route::view('/', 'website.home')->name('home');
-Route::view('/privacy-policies', 'website.privacypolicies')->name('privacy.policies');
-Route::view('/contact', 'website.contact')->name('contact');
-Route::view('/help_center', 'website.helpCenter')->name('helpCenter');
+Route::view('/', 'website.main')->name('home');
+// Route::view('/privacy-policies', 'website.privacypolicies')->name('privacy.policies');
+// Route::view('/contact', 'website.contact')->name('contact');
+// Route::view('/help_center', 'website.helpCenter')->name('helpCenter');
 Route::get('/supplier-costs', [SupplierController::class, 'getSupplierCosts']);
 Route::get('/purchase-orders/{id}/details', [PurchaseController::class, 'details']);
 Route::post('/purchase-orders/{id}/reorder', [PurchaseController::class, 'reorder']);
-Route::get('/blogs', [BlogController::class, 'userView'])->name('blogs.index');
-Route::get('/blogs/{slug}', [BlogController::class, 'userShow'])->name('blogs.show');
+// Route::get('/blogs', [BlogController::class, 'userView'])->name('blogs.index');
+// Route::get('/blogs/{slug}', [BlogController::class, 'userShow'])->name('blogs.show');
 
 
 

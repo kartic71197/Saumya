@@ -79,8 +79,9 @@
 <body class="bg-muted text-foreground antialiased">
     @include('website.components.navbar')
     @include('website.components.hero')
-    @include('website.components.trust-section')
-    @include('website.components.testimonials')
+    @include('website.components.industries')
+    {{-- @include('website.components.trust') --}}
+    {{-- @include('website.components.testimonials') --}}
     @include('website.components.features')
     @include('website.components.cta')
     @include('website.components.footer')
