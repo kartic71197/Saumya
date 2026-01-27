@@ -1,0 +1,107 @@
+name: Deploy Laravel Application to Staging Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # ------------------------------------------------
+    # Checkout source code
+    # ------------------------------------------------
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # ------------------------------------------------
+    # Setup PHP
+    # ------------------------------------------------
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.3
+        extensions: mbstring, pdo, pdo_mysql
+        coverage: none
+
+    # ------------------------------------------------
+    # Prepare Laravel directories (CI only)
+    # ------------------------------------------------
+    - name: Prepare Laravel writable directories
+      run: |
+        mkdir -p bootstrap/cache
+        mkdir -p storage/framework/{cache,sessions,views}
+        chmod -R 775 storage bootstrap/cache
+    # ------------------------------------------------
+    # Install Composer dependencies
+    # ------------------------------------------------
+    - name: Install Composer Dependencies
+      run: |
+        composer clear-cache
+        composer install \
+          --no-dev \
+          --no-interaction \
+          --prefer-dist \
+          --optimize-autoloader
+    # ------------------------------------------------
+    # Setup Node & build frontend assets
+    # ------------------------------------------------
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+
+    - name: Install NPM Dependencies
+      run: npm ci
+
+    - name: Build Frontend Assets
+      run: npm run build
+
+    # ------------------------------------------------
+    # Cleanup CI-only files
+    # ------------------------------------------------
+    - name: Cleanup CI artifacts
+      run: |
+        rm -rf node_modules
+        rm -rf .git
+        rm -rf .github
+    # ------------------------------------------------
+    # Deploy files to Bitnami server
+    # ------------------------------------------------
+    - name: Deploy to Server via Rsync
+      uses: easingthemes/ssh-deploy@v2.1.5
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+        SOURCE: "."
+        REMOTE_HOST: ${{ secrets.SERVER_IP }}
+        REMOTE_USER: ${{ secrets.SSH_USER }}
+        TARGET: "/opt/bitnami/apache/htdocs"
+        EXCLUDE: |
+          .env
+          node_modules
+    # ------------------------------------------------
+    # Post-deploy: permissions, cache, migrations
+    # ------------------------------------------------
+    - name: Post Deploy Laravel Commands
+      uses: appleboy/ssh-action@v0.1.6
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          set -e
+          PHP=/opt/bitnami/php/bin/php
+          cd /opt/bitnami/apache/htdocs
+          echo "🔐 Fixing ownership (Bitnami-safe)..."
+          sudo chown -R bitnami:daemon .
+          echo "📂 Fixing writable permissions..."
+          sudo chmod -R 775 storage bootstrap/cache public/build
+          echo "🧹 Clearing Laravel caches..."
+          $PHP artisan optimize:clear
+          echo "🗄️ Running migrations..."
+          $PHP artisan migrate --force
+          echo "⚡ Optimizing Laravel..."
+          $PHP artisan optimize
+          echo "✅ Deploy completed successfully"
