@@ -16,25 +16,6 @@
                     <!-- Optional company name -->
                 </a>
 
-                <!-- Divider -->
-                <div class="h-8 border-l border-gray-300 dark:border-gray-600"></div>
-
-                <!-- Organization Logo -->
-                @if (!empty(auth()->user()->organization?->image))
-                    <div class="flex items-center space-x-2">
-                        <img src="{{ asset('storage/' . auth()->user()->organization?->image) }}" alt="Organization Logo"
-                            class="w-auto h-10 rounded-md object-cover shadow-sm  dark:ring-gray-700">
-                        {{-- <span class="hidden sm:inline text-sm font-medium text-gray-600 dark:text-gray-300">
-                            {{ auth()->user()->organization?->name }}
-                        </span> --}}
-                    </div>
-                @else
-                    <div class="flex items-center space-x-2">
-                        <span class="hidden sm:inline text-sm font-medium text-gray-600 dark:text-gray-300">
-                            {{ auth()->user()->organization?->name }}
-                        </span>
-                    </div>
-                @endif
             </div>
 
             <div class="hidden md:flex sm:items-center sm:ms-6">
@@ -57,6 +38,7 @@
                         </form>
                     </div>
                 @endif
+                
                 @if(session()->has('impersonator_id') && auth()->user()->system_locked)
                     <div style="
                             background: #ffefc2;
