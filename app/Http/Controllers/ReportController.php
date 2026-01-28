@@ -11,15 +11,15 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReportController extends Controller
 {
-     public function downloadPdf(PurchaseOrder $po)
+    public function downloadPdf(PurchaseOrder $po)
     {
         // load invoice data
         $po->load('edi810s');
-        $supplier = Supplier::where('id',$po->supplier_id)->first();
-        $organization = Organization::where('id',$po->organization_id)->first();
+        $supplier = Supplier::where('id', $po->supplier_id)->first();
+        $organization = Organization::where('id', $po->organization_id)->first();
 
         // render view into PDF
-        $pdf = Pdf::loadView('invoices.pdf', compact('po', 'supplier','organization'));
+        $pdf = Pdf::loadView('invoices.pdf', compact('po', 'supplier', 'organization'));
 
         // return download response
         return $pdf->download("Invoice-{$po->purchase_order_number}.pdf");
@@ -30,6 +30,10 @@ class ReportController extends Controller
             abort(403, 'Unauthorized.');
         }
         return view("reports.index");
+    }
+    public function sales()
+    {
+        return view("reports.sales_report");
     }
     public function purchaseOrderReport()
     {

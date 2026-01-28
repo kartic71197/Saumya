@@ -43,34 +43,19 @@
             </div>
         </div>
 
-        <!-- Cart Header with Search -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 flex-shrink-0">
-            <div class="flex items-center justify-between mb-3">
-                <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2">
-                    🛒 Cart
-                    <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-full"
-                        x-text="locationCart.length"></span>
-                </h2>
-                <button @click="clearCart()" x-show="locationCart.length > 0"
-                    class="text-xs text-red-600 hover:text-red-800 font-semibold hover:underline">
-                    Clear All
-                </button>
-            </div>
-
-            <!-- Search in Cart -->
-            <div class="relative" x-show="locationCart.length > 0">
-                <input type="text" x-model="searchQuery" @input="filterCart()" placeholder="Search in cart..."
-                    class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
-                <svg class="absolute left-3 top-2.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-            </div>
+        <!-- Search in Cart -->
+        <div class="relative" x-show="locationCart.length > 0">
+            <input type="text" x-model="searchQuery" @input="filterCart()" placeholder="Search in cart..."
+                class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+            <svg class="absolute left-3 top-2.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
         </div>
 
         <!-- Cart Items - Fixed Height with Scroll -->
-        <div class="flex-1 overflow-y-auto p-4 space-y-3 max-h-[500px]">
+        <div class="flex-1 overflow-y-auto p-2 space-y-1 max-h-[400px]">
             <template x-if="locationCart.length === 0">
                 <div class="text-center py-12">
                     <svg class="mx-auto h-16 w-16 text-gray-300" fill="none" stroke="currentColor"
@@ -84,57 +69,49 @@
             </template>
 
             <template x-for="(item, index) in filteredCart" :key="index">
-                <div
-                    class="bg-gradient-to-r from-gray-50 to-white rounded-lg p-3 border border-gray-200 hover:border-blue-300 transition-all shadow-sm">
-                    <div class="flex items-start justify-between mb-2">
-                        <div class="flex-1">
-                            <h3 class="text-sm font-bold text-gray-900" x-text="item.product_name"></h3>
-                            <p class="text-xs text-gray-500" x-text="item.sku"></p>
-                            <p class="text-xs text-gray-400">Batch: <span x-text="item.batch_number || 'N/A'"></span>
-                            </p>
+                <div class="bg-white rounded-lg p-2 border border-gray-200 hover:border-blue-300 transition-all shadow-sm">
+                    <div class="flex items-center gap-2">
+                        <!-- Product Info - Name on top, Code below -->
+                        <div class="flex-1 min-w-0">
+                            <div class="text-sm font-semibold text-gray-900 truncate" x-text="item.product_name"></div>
+                            <div class="text-xs text-gray-500" x-text="item.sku"></div>
                         </div>
-                        <button @click="removeItem(item.originalIndex)" class="text-red-500 hover:text-red-700 p-1">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
 
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2">
+                        <!-- Quantity Controls -->
+                        <div class="flex items-center gap-1 flex-shrink-0">
                             <button @click="decrementQty(item.originalIndex)"
-                                class="w-7 h-7 bg-gray-200 hover:bg-gray-300 rounded-lg flex items-center justify-center transition-colors">
-                                <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                        d="M20 12H4" />
+                                class="w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded flex items-center justify-center transition-colors">
+                                <svg class="w-3 h-3 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 12H4" />
                                 </svg>
                             </button>
 
                             <input type="number" :value="item.qty"
                                 @input="updateQty(item.originalIndex, $event.target.value)"
-                                class="w-14 text-center border border-gray-300 rounded-lg py-1 text-sm font-bold focus:ring-2 focus:ring-blue-500">
+                                class="w-10 text-center border border-gray-300 rounded py-0.5 text-xs font-bold focus:ring-1 focus:ring-blue-500">
 
                             <button @click="incrementQty(item.originalIndex)"
                                 :disabled="item.qty >= item.on_hand_quantity"
-                                class="w-7 h-7 bg-green-500 hover:bg-green-600 rounded-lg flex items-center justify-center transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                        d="M12 4v16m8-8H4" />
+                                class="w-6 h-6 bg-green-500 hover:bg-green-600 rounded flex items-center justify-center transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
                                 </svg>
                             </button>
-
-                            <span class="text-xs text-gray-500 ml-1">/ <span
-                                    x-text="item.on_hand_quantity"></span></span>
                         </div>
 
-                        <div class="text-right">
-                            <p class="text-xs text-gray-500">@ $<span x-text="item.price"></span></p>
-                            <p class="text-sm font-bold text-green-700">$<span
-                                    x-text="(item.qty * item.price).toFixed(2)"></span></p>
+                        <!-- Total Price -->
+                        <div class="flex-shrink-0">
+                            <span class="text-sm font-bold text-green-700">$<span x-text="(item.qty * item.price).toFixed(2)"></span></span>
                         </div>
+
+                        <!-- Remove Button -->
+                        <button @click="removeItem(item.originalIndex)"
+                            class="text-red-500 hover:text-red-700 flex-shrink-0">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </template>
@@ -225,6 +202,19 @@
         </div>
     </div>
 </div>
+
+<style>
+    /* Remove default number input spinners */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+</style>
 
 <script>
     function pos() {
@@ -352,15 +342,6 @@
                 this.cart.splice(index, 1);
                 this.updateLocationCart();
                 this.notifyInventory();
-            },
-
-            clearCart() {
-                if (confirm('Are you sure you want to clear the cart?')) {
-                    // Remove only items from selected location
-                    this.cart = this.cart.filter(item => item.location_id != this.selectedLocation);
-                    this.updateLocationCart();
-                    this.notifyInventory();
-                }
             },
 
             notifyInventory() {
