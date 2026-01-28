@@ -285,6 +285,7 @@ Route::middleware(['auth:web', 'check.organization', 'check.plan'])->group(funct
         Route::get('/cycle-count', [ReportController::class, 'CycleCount'])->name('report.cycleCount');
         Route::get('/invoices', [ReportController::class, 'invoiceReport'])->name('report.invoices');
         Route::get('/price-history', [ReportController::class, 'priceHistory'])->name('report.priceHistory');
+        Route::get('/sales', [ReportController::class, 'sales'])->name('report.sales');
 
         Route::get('/getinvoices/{id}', [ReportController::class, 'showInvoiceModal']);
     });

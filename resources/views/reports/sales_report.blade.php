@@ -1,3 +1,3 @@
-<div>
+<x-app-layout>
     <livewire:organization.pos.pos-component />
-</div>
+</x-app-layout>

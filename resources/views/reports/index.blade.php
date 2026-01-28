@@ -91,7 +91,7 @@
                         'icon' => 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z',
                     ],
                     [
-                        'route' => 'pos.sales.index',
+                        'route' => 'report.sales',
                         'title' => 'Sales Report',
                         'desc' => 'Check all Sales details so far.',
                         'icon' => 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z',
