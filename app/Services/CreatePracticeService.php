@@ -61,8 +61,8 @@ class CreatePracticeService
             // 5. Sending email to healthshade support
             $adminUser = auth()->user();
             try {
-                
-                Mail::to('support@healthshade.com')
+
+                Mail::to(config('app.email'))
                     ->send(new NewOrganizationMail($adminUser, $organization));
             } catch (\Exception $e) {
                 Log::error('Failed to send practice creation email', [

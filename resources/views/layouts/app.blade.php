@@ -21,7 +21,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DDN6Y7KLYX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
 
         gtag('config', 'G-DDN6Y7KLYX');
@@ -31,72 +34,18 @@
 
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased" x-data="{ sidebarOpen: true }">
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         @include('layouts.navigation')
-        @if(auth()->user()->role_id == '1')
+        @if (auth()->user()->role_id == '1')
             @include('layouts.admin-side-navigation')
-        @elseif(auth()->user()->is_medical_rep)
-            @include('layouts.medical-rep-navigation')
         @else
             @include('layouts.user-side-navigation')
         @endif
 
-        {{-- <!-- impersonate controller -->
-        @if(session()->has('impersonator_id'))
-            <div style="
-                    position: fixed;
-                    bottom: 20px;   
-                    right: 20px;
-                    background: #ffefc2;
-                    padding: 12px 16px;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-                    z-index: 9999;
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                ">
-                <span><strong>IMPERSONATING:</strong> You are signed in as {{ Auth::user()->name }}:</span>
-                <form method="POST" action="{{ route('impersonate.stop') }}">
-                    @csrf
-                    <button class="text-red-600 text-semibold btn btn-sm btn-outline-dark">Stop</button>
-                </form>
-            </div>
-        @endif --}}
-
-
-        <!-- flash -->
-        <main class="md:ml-20 pt-20 p-3">
-            <!-- Global Back Button -->
-           <!-- Global Back Button -->
-@if (!in_array(Route::currentRouteName(), ['dashboard', 'medical_rep.dashboard','organization.catalog', 'organization.inventory', 'purchase.index', 'picking.index', 'report.index', 'barcode.index', 'patient.index', 'organization.settings', 'organization.settings.inventory_adjust',
-        'organization.settings.inventory_transfer', 'organization.settings.cycle_counts', 'admin.organization.index', 'admin.inventory.index', 'admin.purchase.index', 'admin.settings.index', 'admin.blogs.index', 'potential-users.index', 'ticket.index']))
-    <div class="flex items-center justify-start ml-4 mb-1">
-        <button onclick="history.back()"
-            class="text-gray-500 p-2 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-lg transition-all flex items-center gap-1 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3">
-            
-            <!-- Back Icon -->
-            <svg class="w-6 h-6 text-gray-700 dark:text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-            
-            Back
-        </button>
-    </div>
-@endif
-
-            @if (session('error'))
-                <div id="error-alert" class="bg-red-500 text-white p-4 rounded mb-4">
-                    {{ session('error') }}
-                </div>
-            @endif
-
-            @if (session('success'))
-                <div id="success-alert" class="bg-green-500 text-white p-4 rounded mb-4">
-                    {{ session('success') }}
-                </div>
-            @endif
+        <!-- Main Content with Dynamic Margin -->
+        <main class="pt-20 p-3 transition-all duration-300" 
+            :class="sidebarOpen ? 'md:ml-64' : 'md:ml-20'">
             <livewire:notification.notification-component />
             <livewire:product-details-component />
             <div x-data="{ showTable: false }" x-init="setTimeout(() => showTable = true, 200)">
@@ -110,7 +59,7 @@
     </div>
     @livewireScripts
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Select the alert div
             const errorAlert = document.getElementById('error-alert');
             if (errorAlert) {

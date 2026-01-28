@@ -4,38 +4,39 @@
         [
             'route' => 'dashboard',
             'title' => 'Dashboard',
-            'hasSubmenu' => true,
-            'submenu' => [
-                ['route' => 'dashboard', 'title' => 'Dashboard'],
-            ],
-            'svg' => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>'
+            'hasSubmenu' => false,
+            'svg' => 'icons.dashboard',
         ],
-
+        [
+            'route' => 'pos.sales.index',
+            'title' => 'Point of sale',
+            'hasSubmenu' => false,
+            'svg' => 'icons.pos',
+        ],
+        [
+            'route' => 'appointments.index',
+            'title' => 'Appointments',
+            'hasSubmenu' => false,
+            'svg' => 'icons.appointment',
+        ],
     ];
 
     // Only add the Catalog menu if role_id <= 2
     if ($user->role_id <= 2) {
         $menuItems[] = [
             'route' => 'organization.catalog',
-            'title' => 'Master Catalog',
-            'hasSubmenu' => true,
-            'submenu' => [
-                ['route' => 'organization.catalog', 'title' => 'Master Catalog'],
-            ],
-            'svg' => '<svg fill="currentColor" height="23px" width="23px" stroke-width="1.5" version="1.1" id="XMLID_237_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="catalog"> <g> <path d="M12,23.3L0,20V3l4,1V1l8,2.3L20,1v3l4-1v17L12,23.3z M2,18.5l10,2.8l10-2.7v-13l-2,0.5v11l-8,2.2L4,17V6L2,5.5V18.5z M13,5.1V17l5-1.4v-12L13,5.1z M6,15.5l5,1.4V5.1L6,3.7V15.5z"></path> </g> </g> </g></svg>'
+            'title' => 'Products',
+            'hasSubmenu' => false,
+            'svg' => 'icons.master-catalog',
         ];
     }
 
-    $menuItems[] =
-        [
-            'route' => 'purchase.index',
-            'title' => 'Purchase Orders',
-            'hasSubmenu' => true,
-            'submenu' => [
-                ['route' => 'purchase.index', 'title' => 'Purchase Orders'],
-            ],
-            'svg' => '<svg class="shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256"><g fill="currentColor" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"> <g transform="scale(2,2)"> <path d="M15,109.8l48,17v0c0.1,0 0.2,0.1 0.3,0.1c0.2,0.1 0.5,0.1 0.7,0.1c0.2,0 0.3,0 0.5,0v0c0,0 0,0 0.1,0c0.1,0 0.3,-0.1 0.4,-0.1v0l48,-17c1.2,-0.4 2,-1.6 2,-2.8v-33.7l10,-3.5c0.8,-0.3 1.5,-1 1.8,-1.8c0.3,-0.8 0.2,-1.8 -0.3,-2.6l-12,-20l-0.1,-0.1c0,-0.1 -0.1,-0.1 -0.1,-0.2v0c0,-0.1 -0.1,-0.1 -0.1,-0.2c0,0 0,0 0,-0.1c-0.1,-0.1 -0.1,-0.1 -0.2,-0.2l-0.1,-0.1l-0.1,-0.1h-0.1l-0.1,-0.1c-0.1,-0.1 -0.2,-0.1 -0.3,-0.1c-0.1,0 -0.1,-0.1 -0.2,-0.1v0v0l-48,-17c0,0 0,0 -0.1,0h-0.1h-0.1c-0.1,0 -0.1,0 -0.2,0v0v0c-0.1,0 -0.1,0 -0.2,0c-0.1,0 -0.1,0 -0.2,0c-0.1,0 -0.2,0 -0.4,0c-0.1,0 -0.1,0 -0.2,0c-0.2,0 -0.4,0.1 -0.5,0.1l-48,17c-0.2,0.1 -0.3,0.1 -0.5,0.2l-0.1,0.1c-0.1,0.1 -0.2,0.1 -0.3,0.2l-0.1,0.1c-0.1,0.1 -0.2,0.1 -0.2,0.2l-0.1,0.1c-0.1,0.1 -0.1,0.2 -0.2,0.2c0,0 0,0.1 -0.1,0.1l-12,20c-0.7,1.1 -0.6,2.5 0.2,3.4c0.6,0.7 1.4,1.1 2.3,1.1c0.3,0 0.7,-0.1 1,-0.2l8,-2.8v40c0,1.3 0.8,2.4 2,2.8zM119.5,65.4l-42.2,15l-8.9,-14.8l42.2,-15zM67,34.2l36,12.8l-36,12.8zM67,74.8l6.4,10.7c0.6,1 1.6,1.5 2.6,1.5c0.3,0 0.7,-0.1 1,-0.2l32,-11.3v29.4l-42,14.9zM19,51.2l42,14.9v53.6l-42,-14.9z"></path></g></g> </svg>'
-        ];
+    $menuItems[] = [
+        'route' => 'purchase.index',
+        'title' => 'Purchase Orders',
+        'hasSubmenu' => false,
+        'svg' => 'icons.purcase-orders',
+    ];
 
     // Continue with the rest of the menu
     $menuItems = array_merge($menuItems, [
@@ -49,142 +50,278 @@
                 ['route' => 'organization.settings.inventory_transfer', 'title' => 'Transfer'],
                 ['route' => 'organization.settings.cycle_counts', 'title' => 'Cycle Count'],
             ],
-            'svg' =>
-                '<svg class="shrink-0 size-6" x="0px" y="0px" fill="currentColor" width="100" height="100" version="1.2" baseProfile="tiny" id="inventory" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 256 230" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M61.2,106h37.4v31.2H61.2V106z M61.2,178.7h37.4v-31.2H61.2V178.7z M61.2,220.1h37.4v-31.2H61.2V220.1z M109.7,178.7H147 v-31.2h-37.4V178.7z M109.7,220.1H147v-31.2h-37.4V220.1z M158.2,188.9v31.2h37.4v-31.2H158.2z M255,67.2L128.3,7.6L1.7,67.4 l7.9,16.5l16.1-7.7v144h18.2V75.6h169v144.8h18.2v-144l16.1,7.5L255,67.2z"></path> </g></svg>',
+            'svg' => 'icons.inventory',
         ],
-
         [
             'route' => 'picking.index',
             'title' => 'Pickings',
-            'hasSubmenu' => true,
-            'submenu' => [
-                ['route' => 'picking.index', 'title' => 'Pickings'],
-            ],
-            'svg' => '<svg fill="currentColor" stroke="currentColor" height="24px" width="24px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="currentColor"><g stroke="currentColor" fill="currentColor" id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g fill="currentColor" stroke="currentColor" id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill="currentColor";} </style> <g> <path class="st0" d="M447.77,33.653c-36.385-5.566-70.629,15.824-82.588,49.228h-44.038v37.899h40.902 c5.212,31.372,29.694,57.355,62.855,62.436c41.278,6.316,79.882-22.042,86.222-63.341C517.428,78.575,489.07,39.969,447.77,33.653z "></path> <path class="st0" d="M162.615,338.222c0-6.88-5.577-12.468-12.468-12.468H96.16c-6.891,0-12.467,5.588-12.467,12.468 c0,6.868,5.576,12.467,12.467,12.467h53.988C157.038,350.689,162.615,345.091,162.615,338.222z"></path> <path class="st0" d="M392.999,237.965L284.273,340.452l-37.966,9.398v-86.619H0v215.996h246.307v-59.454l35.547-5.732 c16.95-2.418,29.396-6.692,44.336-15.018l46.302-24.228v104.432h132.435V270.828C504.927,202.618,428.016,202.43,392.999,237.965z M215.996,448.913H30.313v-155.37h185.683v63.805l-36.419,9.01c-15.968,4.395-25.708,20.518-22.174,36.696l0.298,1.247 c3.478,15.912,18.651,26.436,34.785,24.14l23.51-3.788V448.913z"></path> </g> </g></svg>',
+            'hasSubmenu' => false,
+            'svg' => 'icons.picking',
         ],
         [
             'route' => 'report.index',
             'title' => 'Reports',
-            'hasSubmenu' => true,
-            'submenu' => [
-                ['route' => 'report.index', 'title' => 'Reports'],
-            ],
-            'svg' => '<svg class="shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-3 5h3m-6 0h.01M12 16h3m-6 0h.01M10 3v4h4V3h-4Z" /></svg>',
+            'hasSubmenu' => false,
+            'svg' => 'icons.reports',
         ],
         [
             'route' => 'barcode.index',
             'title' => 'Barcode',
-            'hasSubmenu' => true,
-            'submenu' => [
-                ['route' => 'barcode.index', 'title' => 'Barcode'],
-            ],
-            'svg' =>
-                '<svg class="shrink-0 size-5"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.4 3A1.4 1.4 0 0 0 3 4.4V6a1 1 0 0 1-2 0V4.4A3.4 3.4 0 0 1 4.4 1H6a1 1 0 0 1 0 2H4.4ZM17 2a1 1 0 0 1 1-1h1.6A3.4 3.4 0 0 1 23 4.4V6a1 1 0 1 1-2 0V4.4A1.4 1.4 0 0 0 19.6 3H18a1 1 0 0 1-1-1ZM2 17a1 1 0 0 1 1 1v1.6A1.4 1.4 0 0 0 4.4 21H6a1 1 0 1 1 0 2H4.4A3.4 3.4 0 0 1 1 19.6V18a1 1 0 0 1 1-1ZM22 17a1 1 0 0 1 1 1v1.6a3.4 3.4 0 0 1-3.4 3.4H18a1 1 0 1 1 0-2h1.6a1.4 1.4 0 0 0 1.4-1.4V18a1 1 0 0 1 1-1ZM18 8a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V9a1 1 0 0 1 1-1ZM15 9a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0V9ZM10 8a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V9a1 1 0 0 1 1-1ZM7 9a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0V9Z" ></path></svg>',
+            'hasSubmenu' => false,
+            'svg' => 'icons.barcode',
         ],
-        [
-            'route' => 'pos.sales.index',
-            'title' => 'Sales',
-            'hasSubmenu' => true,
-            'submenu' => [
-                ['route' => 'pos.sales.index', 'title' => 'Sales'],
-            ],
-            'svg' => '<svg viewBox="0 0 24 24" fill="currentColor" class="size-6" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path  fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M10.5936 2.31883C11.483 1.89372 12.517 1.89372 13.4064 2.31883C13.7928 2.50351 14.1468 2.80551 14.6371 3.22367C14.6625 3.24538 14.6884 3.2674 14.7146 3.28973C14.9526 3.49262 15.0276 3.555 15.1035 3.60585C15.2965 3.73519 15.5132 3.82495 15.7411 3.86995C15.8307 3.88764 15.9278 3.89654 16.2396 3.92143C16.2739 3.92417 16.3078 3.92685 16.3411 3.92949C16.9834 3.98046 17.4473 4.01727 17.8511 4.15991C18.7807 4.48822 19.5118 5.21935 19.8401 6.14885C19.9827 6.55267 20.0195 7.01656 20.0705 7.6589C20.0732 7.69224 20.0758 7.72607 20.0786 7.76039C20.1035 8.0722 20.1124 8.16933 20.1301 8.25894C20.175 8.48684 20.2648 8.70355 20.3941 8.89652C20.445 8.97239 20.5074 9.04737 20.7103 9.28545C20.7326 9.31166 20.7546 9.33748 20.7763 9.36293C21.1945 9.85316 21.4965 10.2072 21.6812 10.5936C22.1063 11.483 22.1063 12.517 21.6812 13.4064C21.4965 13.7928 21.1945 14.1468 20.7763 14.6371C20.7546 14.6625 20.7326 14.6883 20.7103 14.7146C20.5074 14.9526 20.445 15.0276 20.3941 15.1035C20.2648 15.2965 20.175 15.5132 20.1301 15.7411C20.1124 15.8307 20.1035 15.9278 20.0786 16.2396C20.0758 16.2739 20.0732 16.3078 20.0705 16.3411C20.0195 16.9834 19.9827 17.4473 19.8401 17.8511C19.5118 18.7807 18.7807 19.5118 17.8511 19.8401C17.4473 19.9827 16.9834 20.0195 16.3411 20.0705C16.3078 20.0732 16.2739 20.0758 16.2396 20.0786C15.9278 20.1035 15.8307 20.1124 15.7411 20.1301C15.5132 20.175 15.2965 20.2648 15.1035 20.3941C15.0276 20.445 14.9526 20.5074 14.7146 20.7103C14.6883 20.7326 14.6625 20.7546 14.6371 20.7763C14.1468 21.1945 13.7928 21.4965 13.4064 21.6812C12.517 22.1063 11.483 22.1063 10.5936 21.6812C10.2072 21.4965 9.85315 21.1945 9.3629 20.7763C9.33746 20.7546 9.31165 20.7326 9.28545 20.7103C9.04736 20.5074 8.97239 20.445 8.89652 20.3941C8.70355 20.2648 8.48684 20.175 8.25894 20.1301C8.16933 20.1124 8.0722 20.1035 7.76039 20.0786C7.72607 20.0758 7.69225 20.0732 7.6589 20.0705C7.01656 20.0195 6.55267 19.9827 6.14885 19.8401C5.21935 19.5118 4.48822 18.7807 4.15991 17.8511C4.01727 17.4473 3.98046 16.9834 3.92949 16.3411C3.92685 16.3078 3.92417 16.2739 3.92143 16.2396C3.89654 15.9278 3.88764 15.8307 3.86995 15.7411C3.82495 15.5132 3.73519 15.2965 3.60585 15.1035C3.555 15.0276 3.49262 14.9526 3.28973 14.7146C3.2674 14.6884 3.24538 14.6625 3.22368 14.6371C2.80551 14.1469 2.50351 13.7928 2.31883 13.4064C1.89372 12.517 1.89372 11.483 2.31883 10.5936C2.50351 10.2072 2.80551 9.85315 3.22367 9.36291C3.24537 9.33747 3.26739 9.31165 3.28973 9.28545C3.49262 9.04736 3.555 8.97239 3.60585 8.89652C3.73519 8.70355 3.82495 8.48684 3.86995 8.25894C3.88764 8.16933 3.89654 8.0722 3.92143 7.76039C3.92417 7.72607 3.92685 7.69225 3.92949 7.6589C3.98046 7.01657 4.01727 6.55267 4.15991 6.14885C4.48822 5.21935 5.21935 4.48822 6.14885 4.15991C6.55267 4.01727 7.01657 3.98046 7.6589 3.92949C7.69225 3.92685 7.72607 3.92417 7.76039 3.92143C8.0722 3.89654 8.16933 3.88764 8.25894 3.86995C8.48684 3.82495 8.70355 3.73519 8.89652 3.60585C8.97239 3.555 9.04736 3.49262 9.28545 3.28973C9.31165 3.26739 9.33746 3.24538 9.36291 3.22367C9.85315 2.80551 10.2072 2.50351 10.5936 2.31883ZM12.7573 3.6769C12.2784 3.44799 11.7216 3.44799 11.2427 3.6769C11.0576 3.76539 10.8624 3.92352 10.2618 4.43537C10.2519 4.44378 10.2422 4.45207 10.2326 4.46026C10.0354 4.6283 9.89156 4.75097 9.73456 4.8562C9.37619 5.09639 8.97373 5.2631 8.55048 5.34666C8.36505 5.38327 8.17657 5.39827 7.91837 5.41883C7.90579 5.41983 7.89304 5.42084 7.88012 5.42187C7.09348 5.48465 6.84366 5.51084 6.65016 5.57919C6.14966 5.75597 5.75597 6.14966 5.57919 6.65016C5.51084 6.84366 5.48465 7.09348 5.42187 7.88012C5.42084 7.89304 5.41983 7.90579 5.41883 7.91837C5.39827 8.17657 5.38327 8.36505 5.34666 8.55048C5.2631 8.97373 5.09639 9.37619 4.8562 9.73456C4.75097 9.89156 4.6283 10.0354 4.46025 10.2326C4.45207 10.2422 4.44377 10.2519 4.43537 10.2618C3.92352 10.8624 3.76539 11.0576 3.6769 11.2427C3.44799 11.7216 3.44799 12.2784 3.6769 12.7573C3.76539 12.9424 3.92352 13.1376 4.43537 13.7382C4.44378 13.7481 4.45207 13.7578 4.46026 13.7674C4.6283 13.9646 4.75097 14.1084 4.8562 14.2654C5.09639 14.6238 5.2631 15.0263 5.34666 15.4495C5.38327 15.6349 5.39827 15.8234 5.41883 16.0816C5.41983 16.0942 5.42084 16.107 5.42187 16.1199C5.48465 16.9065 5.51084 17.1563 5.57919 17.3498C5.75597 17.8503 6.14966 18.244 6.65016 18.4208C6.84366 18.4892 7.09348 18.5154 7.88012 18.5781L7.91836 18.5812C8.17658 18.6017 8.36506 18.6167 8.55048 18.6533C8.97373 18.7369 9.37619 18.9036 9.73456 19.1438C9.89156 19.249 10.0354 19.3717 10.2326 19.5397L10.2618 19.5646C10.8624 20.0765 11.0576 20.2346 11.2427 20.3231C11.7216 20.552 12.2784 20.552 12.7573 20.3231C12.9424 20.2346 13.1376 20.0765 13.7382 19.5646L13.7675 19.5397C13.9646 19.3717 14.1084 19.249 14.2654 19.1438C14.6238 18.9036 15.0263 18.7369 15.4495 18.6533C15.6349 18.6167 15.8234 18.6017 16.0816 18.5812L16.1199 18.5781C16.9065 18.5154 17.1563 18.4892 17.3498 18.4208C17.8503 18.244 18.244 17.8503 18.4208 17.3498C18.4892 17.1563 18.5154 16.9065 18.5781 16.1199L18.5812 16.0816C18.6017 15.8234 18.6167 15.6349 18.6533 15.4495C18.7369 15.0263 18.9036 14.6238 19.1438 14.2654C19.249 14.1084 19.3717 13.9646 19.5397 13.7675L19.5646 13.7382C20.0765 13.1376 20.2346 12.9424 20.3231 12.7573C20.552 12.2784 20.552 11.7216 20.3231 11.2427C20.2346 11.0576 20.0765 10.8624 19.5646 10.2618L19.5397 10.2325C19.3717 10.0354 19.249 9.89155 19.1438 9.73456C18.9036 9.37619 18.7369 8.97373 18.6533 8.55048C18.6167 8.36505 18.6017 8.17658 18.5812 7.91836L18.5781 7.88012C18.5154 7.09348 18.4892 6.84366 18.4208 6.65016C18.244 6.14966 17.8503 5.75597 17.3498 5.57919C17.1563 5.51084 16.9065 5.48465 16.1199 5.42187C16.107 5.42084 16.0942 5.41983 16.0816 5.41883C15.8234 5.39827 15.6349 5.38327 15.4495 5.34666C15.0263 5.2631 14.6238 5.09639 14.2654 4.8562C14.1084 4.75097 13.9646 4.6283 13.7674 4.46025C13.7578 4.45207 13.7481 4.44377 13.7382 4.43537C13.1376 3.92352 12.9424 3.76539 12.7573 3.6769Z"  fill="currentColor"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5426 8.45739C15.8365 8.7513 15.8365 9.22783 15.5426 9.52174L9.52174 15.5426C9.22783 15.8365 8.7513 15.8365 8.45739 15.5426C8.16348 15.2487 8.16348 14.7722 8.45739 14.4783L14.4783 8.45739C14.7722 8.16348 15.2487 8.16348 15.5426 8.45739Z"  fill="currentColor"></path> <path d="M15.5122 14.5087C15.5122 15.0629 15.0629 15.5122 14.5087 15.5122C13.9545 15.5122 13.5052 15.0629 13.5052 14.5087C13.5052 13.9545 13.9545 13.5052 14.5087 13.5052C15.0629 13.5052 15.5122 13.9545 15.5122 14.5087Z"  fill="currentColor"></path> <path d="M10.4948 9.49131C10.4948 10.0455 10.0455 10.4948 9.49131 10.4948C8.9371 10.4948 8.48783 10.0455 8.48783 9.49131C8.48783 8.9371 8.9371 8.48783 9.49131 8.48783C10.0455 8.48783 10.4948 8.9371 10.4948 9.49131Z"  fill="currentColor"></path> </g></svg>',
-        ],
-        [
-            'route' => 'patient.index',
-            'title' => 'Patients',
-            'hasSubmenu' => true,
-            'submenu' => [
-                ['route' => 'patient.index', 'title' => 'Patients'],
-            ],
-            'svg' => '<svg class="shrink-0 size-6" fill="currentColor" viewBox="0 0 100 100" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="currentColor" stroke-width="0.001"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="_x31_"></g> <g id="_x32_"> <path d="M52.6,85.3c-0.5,0-1-0.2-1.4-0.6L14.8,48.2c-0.5-0.5-0.7-1.3-0.5-2l7.3-23.9c0.2-0.6,0.7-1.2,1.4-1.3l23.4-6.8 c0.7-0.2,1.5,0,2,0.5l36.4,36.4c0.8,0.8,0.8,2,0,2.8L54,84.7C53.7,85.1,53.1,85.3,52.6,85.3z M18.5,46.3l34.2,34.2l27.8-27.8 L46.2,18.4l-21.2,6.1L18.5,46.3z M55.5,64.6L55.5,64.6c-0.5,0-1-0.2-1.4-0.6l-3.9-3.9l-3.9,3.9c-0.8,0.8-2.1,0.8-2.8,0L36.3,57 c-0.4-0.4-0.6-0.9-0.6-1.4s0.2-1,0.6-1.4l3.9-3.9l-3.9-3.9c-0.4-0.4-0.6-0.9-0.6-1.4s0.2-1,0.6-1.4l7.1-7.1 c0.4-0.4,0.9-0.6,1.4-0.6l0,0c0.5,0,1,0.2,1.4,0.6l3.9,3.9l3.9-3.9c0.8-0.8,2.1-0.8,2.8,0l7.1,7.1c0.4,0.4,0.6,0.9,0.6,1.4 s-0.2,1-0.6,1.4l-3.9,3.9l3.9,3.9c0.4,0.4,0.6,0.9,0.6,1.4s-0.2,1-0.6,1.4L57,64.1C56.6,64.4,56.1,64.6,55.5,64.6z M50.2,55.3 c0.5,0,1,0.2,1.4,0.6l3.9,3.9l4.3-4.3l-3.9-3.9c-0.4-0.4-0.6-0.9-0.6-1.4s0.2-1,0.6-1.4l3.9-3.9l-4.3-4.3l-3.9,3.9 c-0.8,0.8-2.1,0.8-2.8,0l-3.9-3.9l-4.3,4.3l3.9,3.9c0.4,0.4,0.6,0.9,0.6,1.4s-0.2,1-0.6,1.4l-3.9,3.9l4.3,4.3l3.9-3.9 C49.2,55.5,49.7,55.3,50.2,55.3z M31.4,36.7c-1.3,0-2.7-0.5-3.7-1.5c-2-2-2-5.4,0-7.4c2-2,5.4-2,7.4,0c2,2,2,5.4,0,7.4 C34.1,36.2,32.8,36.7,31.4,36.7z M31.4,30.2c-0.3,0-0.6,0.1-0.9,0.4c-0.5,0.5-0.5,1.3,0,1.8c0.5,0.5,1.3,0.5,1.8,0 c0.5-0.5,0.5-1.3,0-1.8C32.1,30.3,31.8,30.2,31.4,30.2z"></path> </g> <g id="_x33_"></g> <g id="_x34_"></g> <g id="_x35_"></g> <g id="_x36_"></g> <g id="_x37_"></g> <g id="_x38_"></g> <g id="_x39_"></g> <g id="_x31_0"></g> <g id="_x31_1"></g> <g id="_x31_2"></g> <g id="_x31_3"></g> <g id="_x31_4"></g> <g id="_x31_5"></g> <g id="_x31_6"></g> <g id="_x31_7"></g> <g id="_x31_8"></g> <g id="_x31_9"></g> <g id="_x32_0"></g> <g id="_x32_1"></g> <g id="_x32_2"></g> <g id="_x32_3"></g> <g id="_x32_4"></g> <g id="_x32_5"></g> </g></svg>',
-        ],
+
         // [
-        //     'route' => 'shipping.index',
-        //     'title' => 'Shipping',
-        //     'svg' => '<svg fill="currentColor" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M 0 6 L 0 8 L 19 8 L 19 23 L 12.84375 23 C 12.398438 21.28125 10.851563 20 9 20 C 7.148438 20 5.601563 21.28125 5.15625 23 L 4 23 L 4 18 L 2 18 L 2 25 L 5.15625 25 C 5.601563 26.71875 7.148438 28 9 28 C 10.851563 28 12.398438 26.71875 12.84375 25 L 21.15625 25 C 21.601563 26.71875 23.148438 28 25 28 C 26.851563 28 28.398438 26.71875 28.84375 25 L 32 25 L 32 16.84375 L 31.9375 16.6875 L 29.9375 10.6875 L 29.71875 10 L 21 10 L 21 6 Z M 1 10 L 1 12 L 10 12 L 10 10 Z M 21 12 L 28.28125 12 L 30 17.125 L 30 23 L 28.84375 23 C 28.398438 21.28125 26.851563 20 25 20 C 23.148438 20 21.601563 21.28125 21.15625 23 L 21 23 Z M 2 14 L 2 16 L 8 16 L 8 14 Z M 9 22 C 10.117188 22 11 22.882813 11 24 C 11 25.117188 10.117188 26 9 26 C 7.882813 26 7 25.117188 7 24 C 7 22.882813 7.882813 22 9 22 Z M 25 22 C 26.117188 22 27 22.882813 27 24 C 27 25.117188 26.117188 26 25 26 C 23.882813 26 23 25.117188 23 24 C 23 22.882813 23.882813 22 25 22 Z"></path></g></svg>',
+        //     'route' => 'patient.index',
+        //     'title' => 'Patients',
+        //     'hasSubmenu' => false,
+        //     'svg' => 'icons.patients',
         // ],
         [
             'route' => 'organization.settings',
             'title' => 'Settings',
-            'hasSubmenu' => true,
-            'submenu' => [
-                ['route' => 'organization.settings', 'title' => 'Settings'],
-            ],
-            'svg' => '<svg class="shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256"><g fill="currentColor" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M22.20508,2c-0.48953,0.00026 -0.90693,0.35484 -0.98633,0.83789l-0.97266,5.95508c-1.16958,0.34023 -2.28485,0.7993 -3.33594,1.37109l-4.91406,-3.50977c-0.39728,-0.28369 -0.94131,-0.23911 -1.28711,0.10547l-3.89062,3.88672c-0.3432,0.34344 -0.39015,0.88376 -0.11133,1.28125l3.45703,4.94531c-0.58061,1.05722 -1.04985,2.17878 -1.39844,3.35938l-5.92969,0.98633c-0.4815,0.0811 -0.83404,0.49805 -0.83398,0.98633v5.5c-0.00088,0.48518 0.3466,0.901 0.82422,0.98633l5.93359,1.05078c0.3467,1.17855 0.81296,2.30088 1.39453,3.35937l-3.5,4.89648c-0.28369,0.39728 -0.23911,0.94131 0.10547,1.28711l3.88867,3.89063c0.34265,0.34275 0.88175,0.39048 1.2793,0.11328l4.95508,-3.46875c1.05419,0.57517 2.17218,1.03762 3.3457,1.38086l0.99023,5.96289c0.08025,0.48228 0.49742,0.83584 0.98633,0.83594h5.5c0.4858,0.00071 0.90184,-0.34778 0.98633,-0.82617l1.06055,-5.98633c1.16868,-0.3485 2.28142,-0.8178 3.33008,-1.39648l4.98828,3.5c0.39749,0.27882 0.93781,0.23187 1.28125,-0.11133l3.88867,-3.89258c0.34612,-0.34687 0.38995,-0.89343 0.10352,-1.29102l-3.55664,-4.9375c0.56867,-1.04364 1.02681,-2.14972 1.36719,-3.31055l6.01758,-1.05469c0.47839,-0.08448 0.82689,-0.50053 0.82617,-0.98633v-5.5c-0.00026,-0.48953 -0.35484,-0.90693 -0.83789,-0.98633l-6.00781,-0.98242c-0.34266,-1.15945 -0.80206,-2.26356 -1.37109,-3.30664l3.50781,-4.99805c0.27882,-0.39749 0.23187,-0.93781 -0.11133,-1.28125l-3.89062,-3.88867c-0.34687,-0.34612 -0.89343,-0.38995 -1.29102,-0.10352l-4.92383,3.54102c-1.04908,-0.57636 -2.16255,-1.04318 -3.33398,-1.38867l-1.04687,-5.98437c-0.08364,-0.47917 -0.49991,-0.82867 -0.98633,-0.82812zM23.05664,4h3.80859l0.99609,5.68555c0.06772,0.38959 0.35862,0.70269 0.74219,0.79883c1.46251,0.36446 2.83609,0.94217 4.08984,1.70117c0.34265,0.20761 0.77613,0.1907 1.10156,-0.04297l4.67969,-3.36328l2.69336,2.69336l-3.33203,4.74805c-0.22737,0.3236 -0.24268,0.75079 -0.03906,1.08984c0.75149,1.25092 1.32146,2.61583 1.68555,4.07031c0.0969,0.38717 0.41473,0.67966 0.80859,0.74414l5.70703,0.93359v3.80859l-5.71875,1.00391c-0.3899,0.06902 -0.70237,0.36157 -0.79687,0.74609c-0.35988,1.45263 -0.93019,2.8175 -1.68164,4.06836c-0.20617,0.34256 -0.18851,0.775 0.04492,1.09961l3.37891,4.68945l-2.69336,2.69531l-4.74023,-3.32617c-0.32527,-0.22783 -0.75452,-0.24163 -1.09375,-0.03516c-1.24752,0.75899 -2.62251,1.33943 -4.08008,1.70898c-0.38168,0.09622 -0.67142,0.40737 -0.74023,0.79492l-1.00977,5.6875h-3.81445l-0.94141,-5.66211c-0.06549,-0.39365 -0.35874,-0.7107 -0.74609,-0.80664c-1.46338,-0.36069 -2.84314,-0.93754 -4.10547,-1.69531c-0.33857,-0.20276 -0.76473,-0.18746 -1.08789,0.03906l-4.70312,3.29492l-2.69531,-2.69922l3.32422,-4.64648c0.23221,-0.3254 0.24834,-0.75782 0.04102,-1.09961c-0.76602,-1.26575 -1.34535,-2.6454 -1.71094,-4.11523c-0.09555,-0.38244 -0.40684,-0.67307 -0.79492,-0.74219l-5.63086,-1v-3.81445l5.62695,-0.93555c0.39312,-0.06519 0.71002,-0.35754 0.80664,-0.74414c0.36873,-1.4749 0.94778,-2.85432 1.71094,-4.11719c0.20562,-0.33876 0.19183,-0.76697 -0.03516,-1.0918l-3.28516,-4.69531l2.69727,-2.69531l4.66211,3.33203c0.32413,0.23112 0.75447,0.248 1.0957,0.04297c1.25566,-0.75415 2.63862,-1.32636 4.10352,-1.68555c0.38927,-0.09584 0.68369,-0.41486 0.74805,-0.81055zM25,17c-4.40643,0 -8,3.59357 -8,8c0,4.40643 3.59357,8 8,8c4.40643,0 8,-3.59357 8,-8c0,-4.40643 -3.59357,-8 -8,-8zM25,19c3.32555,0 6,2.67445 6,6c0,3.32555 -2.67445,6 -6,6c-3.32555,0 -6,-2.67445 -6,-6c0,-3.32555 2.67445,-6 6,-6z"></path></g></g> </svg>',
-
+            'hasSubmenu' => false,
+            'svg' => 'icons.settings',
         ],
-    ])
-    ;
+    ]);
 @endphp
-@php
-    // Count how many submenu items this menu has
-    $submenuCount = isset($item['submenu']) ? count($item['submenu']) : 0;
-    $isInventory = $submenuCount > 1;  // Inventory is currently the only menu with more than one submenu item.
-    // This flag can be used in the Blade template to conditionally handle multi-item submenus
-@endphp
-
-
 
 <!-- Sidebar -->
-<div
-    class="fixed top-16 left-0 h-[calc(100vh-4rem)] w-20 bg-primary-md border-r border-gray-200 flex flex-col items-center py-4 px-2 gap-4 z-50 shadow-lg">
-    {{-- Menu --}}
-    @foreach ($menuItems as $item)
-        @php
-            // Check if current route matches this item or any of its submenu items
-            $isActive = request()->routeIs($item['route'] ?? '');
-            if (!empty($item['hasSubmenu'])) {
-                foreach ($item['submenu'] as $sub) {
-                    if (request()->routeIs($sub['route'] ?? '')) {
-                        $isActive = true;
-                        break;
-                    }
-                }
-            }
-        @endphp
+<div x-data="{
+    sidebarOpen: true,
+    openSubmenu: null,
+    toggleSidebar() {
+        this.sidebarOpen = !this.sidebarOpen;
+        if (!this.sidebarOpen) {
+            this.openSubmenu = null;
+        }
+    },
+    toggleSubmenu(index) {
+        if (this.sidebarOpen) {
+            this.openSubmenu = this.openSubmenu === index ? null : index;
+        }
+    }
+}"
+    class="fixed top-16 left-0 h-[calc(100vh-4rem)] bg-gradient-to-b from-slate-50 to-white dark:from-gray-900 dark:to-gray-800 border-r border-slate-200 dark:border-gray-700 flex flex-col shadow-xl z-50 transition-all duration-300 ease-in-out"
+    :class="sidebarOpen ? 'w-64' : 'w-20'">
 
-        <div class="relative group w-full flex justify-center">
-            <a href="{{ route($item['route']) }}" class="w-full flex justify-center">
-                <button class="w-12 {{ $isInventory ? 'h-12' : 'py-2' }}  flex items-center justify-center rounded-xl transition-all duration-200 ease-out border border-transparent
-                                            {{ $isActive
-            ? 'bg-white text-primary-md shadow-md scale-110'
-            : 'text-white hover:bg-white/10 hover:scale-105 active:scale-95' }}
-                                            focus:outline-none focus:ring-2 focus:ring-white/20"
-                    title="{{ $item['title'] ?? 'Menu Item' }}">
-                    {!! $item['svg'] !!}
-                </button>
-            </a>
-
-            {{-- Submenu --}}
-            @if(!empty($item['hasSubmenu']))
-                <div class="absolute left-full hidden group-hover:flex flex-col bg-white border border-gray-200 rounded-lg shadow-xl
-                        z-50 py-1 animate-in fade-in slide-in-from-left-2 duration-150
-                        {{ $item['route'] == 'organization.inventory' ? 'w-48 max-h-64 overflow-auto' : 'min-w-max' }}">
-                    @foreach ($item['submenu'] as $sub)
-                        <a href="{{ route($sub['route']) }}" class="flex items-center justify-start text-left group text-gray-700 hover:bg-primary-md/10 hover:text-primary-md
-                                  transition-all duration-200 ease-in-out text-sm font-medium h-10 px-3
-                                  {{ $item['route'] == 'organization.inventory' ? 'hover:pl-6' : '' }}
-                                  {{ request()->routeIs($sub['route'] ?? '') ? 'bg-primary-md/10 text-primary-md font-semibold' : '' }}
-                                  {{ $loop->first ? 'rounded-t-lg' : '' }}
-                                  {{ $loop->last ? 'rounded-b-lg' : '' }}">
-                            <span class="w-full">
-                                {{ $sub['title'] }}
-                            </span>
-                        </a>
-                    @endforeach
-                </div>
-            @else
-                {{-- Tooltip for single items --}}
-                <span class="absolute left-full ml-1 top-1/2 transform -translate-y-1/2 
-                          z-20 bg-white text-black px-3 py-2 text-sm rounded shadow-md 
-                          opacity-0 group-hover:opacity-100 
-                          transition-all duration-500 ease-in-out 
-                          translate-x-2 group-hover:translate-x-0
-                          min-w-max whitespace-nowrap">
-                    {{ __($item['title']) }}
+    <!-- Header with Logo and Toggle -->
+    <div
+        class="flex items-center justify-between px-4 py-5 border-b border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+        <!-- Organization Logo -->
+        <div class="flex items-center gap-3 min-w-0" x-show="sidebarOpen"
+            x-transition:enter="transition ease-out duration-300 delay-100"
+            x-transition:enter-start="opacity-0 -translate-x-4" x-transition:enter-end="opacity-100 translate-x-0">
+            @if (!empty(auth()->user()->organization?->image))
+                <img src="{{ asset('storage/' . auth()->user()->organization?->image) }}" alt="Organization Logo"
+                    class="w-10 h-10 rounded-lg object-cover shadow-sm ring-2 ring-slate-200 dark:ring-gray-700">
+            @endif
+            <div class="flex flex-col min-w-0">
+                <span class="text-sm font-bold text-slate-800 dark:text-slate-100 truncate tracking-tight">
+                    {{ auth()->user()->organization?->name ?? 'Organization' }}
                 </span>
+                <span class="text-xs text-slate-500 dark:text-gray-400 font-medium">
+                    Navigation
+                </span>
+            </div>
+        </div>
+
+        <!-- Collapsed State Logo -->
+        <div x-show="!sidebarOpen" class="mx-auto" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 scale-50" x-transition:enter-end="opacity-100 scale-100">
+            @if (!empty(auth()->user()->organization?->image))
+                <img src="{{ asset('storage/' . auth()->user()->organization?->image) }}" alt="Organization Logo"
+                    class="w-10 h-10 rounded-lg object-cover shadow-md ring-2 ring-slate-300 dark:ring-gray-600">
+            @else
+                <div
+                    class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-md to-primary-md/80 flex items-center justify-center shadow-md">
+                    <span class="text-white font-bold text-lg">
+                        {{ substr(auth()->user()->organization?->name ?? 'O', 0, 1) }}
+                    </span>
+                </div>
             @endif
         </div>
-    @endforeach
+
+        <!-- Toggle Button -->
+        <button @click="toggleSidebar()" x-show="sidebarOpen"
+            class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-gray-700 dark:hover:bg-gray-600 transition-all duration-200 group flex-shrink-0">
+            <svg class="w-5 h-5 text-slate-600 dark:text-gray-300 transition-transform duration-300 group-hover:scale-110"
+                :class="sidebarOpen ? 'rotate-0' : 'rotate-180'" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                    d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+            </svg>
+        </button>
+
+        <!-- Collapsed Toggle Button -->
+        <button @click="toggleSidebar()" x-show="!sidebarOpen"
+            class="absolute -right-3 top-20 p-1.5 rounded-full bg-white dark:bg-gray-700 border-2 border-slate-200 dark:border-gray-600 hover:border-primary-md dark:hover:border-primary-md transition-all duration-200 shadow-lg group">
+            <svg class="w-4 h-4 text-slate-600 dark:text-gray-300 transition-transform duration-300 group-hover:scale-110"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="flex-1 overflow-y-auto overflow-x-hidden py-6 px-3 space-y-1.5">
+        @foreach ($menuItems as $index => $item)
+            @php
+                // Check if current route matches this item or any of its submenu items
+                $isActive = request()->routeIs($item['route'] ?? '');
+                if (!empty($item['hasSubmenu'])) {
+                    foreach ($item['submenu'] as $sub) {
+                        if (request()->routeIs($sub['route'] ?? '')) {
+                            $isActive = true;
+                            break;
+                        }
+                    }
+                }
+            @endphp
+
+            <div class="relative">
+                @if (!empty($item['hasSubmenu']))
+                    <!-- Menu Item with Submenu -->
+                    <button @click="toggleSubmenu({{ $index }})"
+                        class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl transition-all duration-200 group
+                            {{ $isActive
+                                ? 'bg-gradient-to-r from-primary-md to-primary-md/90 text-white shadow-lg shadow-primary-md/30'
+                                : 'text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-gray-700/50 hover:shadow-md' }}"
+                        :class="sidebarOpen ? 'justify-between' : 'justify-center'">
+
+                        <div class="flex items-center gap-3 min-w-0">
+                            <!-- Icon -->
+                            <div
+                                class="flex-shrink-0 w-5 h-5 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
+                                {!! View::make($item['svg'])->render() !!}
+                            </div>
+
+                            <!-- Title -->
+                            <span x-show="sidebarOpen" x-transition:enter="transition ease-out duration-200 delay-100"
+                                x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                                x-transition:leave="transition ease-in duration-150"
+                                x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+                                class="text-sm font-semibold truncate tracking-wide">
+                                {{ $item['title'] }}
+                            </span>
+                        </div>
+
+                        <!-- Chevron -->
+                        <svg x-show="sidebarOpen" class="w-4 h-4 transition-transform duration-300 flex-shrink-0"
+                            :class="openSubmenu === {{ $index }} ? 'rotate-180' : ''" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <!-- Submenu -->
+                    <div x-show="sidebarOpen && openSubmenu === {{ $index }}"
+                        x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 -translate-y-2"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-200"
+                        x-transition:leave-start="opacity-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 -translate-y-2"
+                        class="ml-9 mt-2 space-y-1 border-l-2 border-slate-200 dark:border-gray-700 pl-4">
+                        @foreach ($item['submenu'] as $sub)
+                            <a href="{{ route($sub['route']) }}"
+                                class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-all duration-200 group
+                                    {{ request()->routeIs($sub['route'] ?? '')
+                                        ? 'bg-primary-md/15 text-primary-md font-semibold shadow-sm'
+                                        : 'text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-700/50 hover:text-slate-900 dark:hover:text-gray-200 hover:translate-x-1' }}">
+                                <span
+                                    class="w-2 h-2 rounded-full transition-all duration-200 
+                                    {{ request()->routeIs($sub['route'] ?? '')
+                                        ? 'bg-primary-md shadow-sm shadow-primary-md/50'
+                                        : 'bg-slate-300 dark:bg-gray-600 group-hover:bg-primary-md/50' }}">
+                                </span>
+                                <span class="truncate font-medium">{{ $sub['title'] }}</span>
+                            </a>
+                        @endforeach
+                    </div>
+                @else
+                    <!-- Simple Menu Item -->
+                    <a href="{{ route($item['route']) }}"
+                        class="flex items-center gap-3 px-3.5 py-3 rounded-xl transition-all duration-200 group
+                            {{ $isActive
+                                ? 'bg-gradient-to-r from-primary-md to-primary-md/90 text-white shadow-lg shadow-primary-md/30'
+                                : 'text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-gray-700/50 hover:shadow-md' }}"
+                        :class="sidebarOpen ? '' : 'justify-center'">
+
+                        <!-- Icon -->
+                        <div
+                            class="flex-shrink-0 w-5 h-5 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
+                            {!! View::make($item['svg'])->render() !!}
+                        </div>
+
+                        <!-- Title -->
+                        <span x-show="sidebarOpen" x-transition:enter="transition ease-out duration-200 delay-100"
+                            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
+                            x-transition:leave-end="opacity-0" class="text-sm font-semibold truncate tracking-wide">
+                            {{ $item['title'] }}
+                        </span>
+                    </a>
+                @endif
+
+                <!-- Tooltip for collapsed state -->
+                <div x-show="!sidebarOpen"
+                    class="absolute left-full ml-3 px-3 py-2 bg-slate-900 dark:bg-gray-700 text-white text-sm font-medium rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none whitespace-nowrap z-50 border border-slate-700"
+                    style="top: 50%; transform: translateY(-50%);">
+                    {{ $item['title'] }}
+                    <div
+                        class="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-slate-900 dark:border-r-gray-700">
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </nav>
+
+    <!-- Footer Section -->
+    <div class="border-t border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-800" x-show="sidebarOpen"
+        x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100">
+        <div class="px-4 py-4">
+            <div class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-slate-50 dark:bg-gray-700/50">
+                <svg class="w-4 h-4 text-primary-md" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
+                </svg>
+                <div class="flex flex-col">
+                    <span class="text-xs font-bold text-slate-700 dark:text-slate-200">MedSync v1.0</span>
+                    <span class="text-xs text-slate-500 dark:text-gray-400">All systems operational</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+    /* Custom scrollbar for sidebar */
+    .overflow-y-auto::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .overflow-y-auto::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .overflow-y-auto::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, rgba(148, 163, 184, 0.3), rgba(148, 163, 184, 0.5));
+        border-radius: 3px;
+    }
+
+    .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(to bottom, rgba(148, 163, 184, 0.5), rgba(148, 163, 184, 0.7));
+    }
+
+    /* Ensure Alpine.js transitions work smoothly */
+    [x-cloak] {
+        display: none !important;
+    }
+
+    /* Smooth shadow transitions */
+    .shadow-lg {
+        transition: box-shadow 0.2s ease-in-out;
+    }
+</style>
